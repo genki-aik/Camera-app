@@ -80,7 +80,7 @@ export default function App() {
                   <Text
                     style = {{
                       color: '#fff',
-                      fontSize: 20
+                      fontSize: 25
                     }}
                   >Re-take</Text>
                 </TouchableOpacity>
@@ -96,7 +96,7 @@ export default function App() {
                   <Text
                     style = {{
                       color: '#fff',
-                      fontSize: 20
+                      fontSize: 25
                     }}
                   >Save Photo</Text>
                 </TouchableOpacity>
