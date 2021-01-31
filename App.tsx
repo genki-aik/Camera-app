@@ -50,6 +50,12 @@ export default function App() {
     )
   }
 
+  const __retakePicture = () => {
+    setCapturedImage(null)
+    setPreviewVisible(false)
+    __startCamera()
+  }
+
   return (
     <View style={styles.container}>
       {startCamera ? (
@@ -60,7 +66,7 @@ export default function App() {
           }}
         >
           {previewVisible && capturedImage ? (
-              <CameraPreview photo = {capturedImage} />
+              <CameraPreview photo = {capturedImage} retakePicture = {__retakePicture} />
           ) : (
             <Camera
               style={{
