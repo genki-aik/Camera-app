@@ -10,6 +10,7 @@ export default function App() {
   const [startCamera, setStartCamera] = React.useState(false)
   const [previewVisible, setPreviewVisible] = React.useState(false)
   const [capturedImage, setCapturedImage] = React.useState<any>(null)
+  const [flashMode, setFlashMode] = React.useState('off')
 
   const __startCamera = async () => {
     const {status} = await Camera.requestPermissionsAsync()
@@ -116,6 +117,16 @@ export default function App() {
 
   const __savePhoto = () => {
 
+  }
+
+  const __handleFlashMode = () => {
+    if (flashMode === 'on') {
+      setFlashMode('off')
+    } else if (flashMode === 'off') {
+      setFlashMode('on')
+    } else {
+      setFlashMode('auto')
+    }
   }
 
   return (
