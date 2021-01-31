@@ -10,8 +10,8 @@ export default function App() {
   const [startCamera, setStartCamera] = React.useState(false)
   const [previewVisible, setPreviewVisible] = React.useState(false)
   const [capturedImage, setCapturedImage] = React.useState<any>(null)
-  const [flash, setFlash] = React.useState('off')
-  const [flipCamera, setflipCamera] = React.useState(Camera.Constants.Type.back)
+  const [flashMode, setFlashMode] = React.useState('off')
+  const [cameraType, setCameraType] = React.useState(Camera.Constants.Type.back)
 
   const __startCamera = async () => {
     const {status} = await Camera.requestPermissionsAsync()
@@ -121,20 +121,20 @@ export default function App() {
   }
 
   const __handleFlash = () => {
-    if (flash === 'on') {
-      setFlash('off')
-    } else if (flash === 'off') {
-      setFlash('on')
+    if (flashMode === 'on') {
+      setFlashMode('off')
+    } else if (flashMode === 'off') {
+      setFlashMode('on')
     } else {
-      setFlash('auto')
+      setFlashMode('auto')
     }
   }
 
   const __flipCamera = () => {
-    if (flipCamera === 'back') {
-      setflipCamera('front')
+    if (cameraType === 'back') {
+      setCameraType('front')
     } else {
-      setflipCamera('back')
+      setCameraType('back')
     }
   }
 
@@ -155,8 +155,8 @@ export default function App() {
                 flex: 1,
                 width: "100%"
               }}
-              flash = {flash}
-              flipCamera = {flipCamera}
+              flashMode = {flashMode}
+              type = {cameraType}
               ref={(r) => {
                 camera = r
               }}
@@ -175,7 +175,7 @@ export default function App() {
                       position: 'absolute',
                       left: '5%',
                       top: '10%',
-                      backgroundColor: flash === 'off' ? '#000' : '#fff',
+                      backgroundColor: flashMode === 'off' ? '#000' : '#fff',
                       borderRadius: '50%',
                       height: 25,
                       width: 100
@@ -203,7 +203,7 @@ export default function App() {
                         color: 'yellow'
                       }}
                     >
-                      {flipCamera === 'front' ? 'FLIP' : '?'}
+                      {cameraType === 'front' ? 'FLIP' : '?'}
                     </Text>
                   </TouchableOpacity>
                 </View>
