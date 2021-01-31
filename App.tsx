@@ -146,6 +146,7 @@ export default function App() {
                 flex: 1,
                 width: "100%"
               }}
+              flash = {flash}
               ref={(r) => {
                 camera = r
               }}
@@ -167,12 +168,13 @@ export default function App() {
                       backgroundColor: flash === 'off' ? '#000' : '#fff',
                       borderRadius: '50%',
                       height: 25,
-                      width: 25
+                      width: 75
                     }}
                   >
                     <Text
                       style = {{
-                        fontSize: 25
+                        fontSize: 25,
+                        color: 'red'
                       }}
                     >FLASH</Text>
                   </TouchableOpacity>
