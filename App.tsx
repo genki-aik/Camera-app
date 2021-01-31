@@ -11,6 +11,7 @@ export default function App() {
   const [previewVisible, setPreviewVisible] = React.useState(false)
   const [capturedImage, setCapturedImage] = React.useState<any>(null)
   const [flash, setFlash] = React.useState('off')
+  const [flipCamera, setflipCamera] = React.useState(Camera.Constants.Type.back)
 
   const __startCamera = async () => {
     const {status} = await Camera.requestPermissionsAsync()
@@ -129,6 +130,14 @@ export default function App() {
     }
   }
 
+  const __flipCamera = () => {
+    if (flipCamera === 'back') {
+      setflipCamera('front')
+    } else {
+      setflipCamera('back')
+    }
+  }
+
   return (
     <View style={styles.container}>
       {startCamera ? (
@@ -147,6 +156,7 @@ export default function App() {
                 width: "100%"
               }}
               flash = {flash}
+              flipCamera = {flipCamera}
               ref={(r) => {
                 camera = r
               }}
@@ -168,7 +178,7 @@ export default function App() {
                       backgroundColor: flash === 'off' ? '#000' : '#fff',
                       borderRadius: '50%',
                       height: 25,
-                      width: 75
+                      width: 100
                     }}
                   >
                     <Text
@@ -177,6 +187,24 @@ export default function App() {
                         color: 'red'
                       }}
                     >FLASH</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress = {__flipCamera}
+                    style = {{
+                      marginTop: 20,
+                      borderRadius: '50%',
+                      height: 25,
+                      width: 75
+                    }}
+                  >
+                    <Text
+                      style = {{
+                        fontSize: 20,
+                        color: 'yellow'
+                      }}
+                    >
+                      {flipCamera === 'front' ? 'FLIP' : '?'}
+                    </Text>
                   </TouchableOpacity>
                 </View>
                 <View
