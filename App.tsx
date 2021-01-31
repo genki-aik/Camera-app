@@ -45,7 +45,65 @@ export default function App() {
           style = {{
             flex: 1
           }}
-        ></ImageBackground>
+        >
+          <View
+            style = {{
+              flex: 1,
+              flexDirection: 'column',
+              padding: 15,
+              justifyContent: 'flex-end'
+            }}
+          >
+            <View
+              style = {{
+                flex: 1,
+                flexDirection: 'column',
+                padding: 15,
+                justifyContent: 'flex-end'
+              }}
+            >
+              <View
+                style = {{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between'
+                }}
+              >
+                <TouchableOpacity
+                  onPress = {__retakePicture}
+                  style = {{
+                    width: 130,
+                    height: 40,
+                    alignItems: 'center',
+                    borderRadius: 4
+                  }}
+                >
+                  <Text
+                    style = {{
+                      color: '#fff',
+                      fontSize: 20
+                    }}
+                  >Re-take</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress = {__savePhoto}
+                  style = {{
+                    width: 130,
+                    height: 40,
+                    alignItems: 'center',
+                    borderRadius: 4
+                  }}
+                >
+                  <Text
+                    style = {{
+                      color: '#fff',
+                      fontSize: 20
+                    }}
+                  >Save Photo</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </ImageBackground>
       </View>
     )
   }
@@ -54,6 +112,10 @@ export default function App() {
     setCapturedImage(null)
     setPreviewVisible(false)
     __startCamera()
+  }
+
+  const __savePhoto = () => {
+
   }
 
   return (
@@ -66,7 +128,7 @@ export default function App() {
           }}
         >
           {previewVisible && capturedImage ? (
-              <CameraPreview photo = {capturedImage} retakePicture = {__retakePicture} />
+              <CameraPreview photo = {capturedImage} savePhoto = {__savePhoto} retakePicture = {__retakePicture} />
           ) : (
             <Camera
               style={{
