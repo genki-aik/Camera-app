@@ -158,6 +158,25 @@ export default function App() {
                   flexDirection: 'row'
                 }}
               >
+                  <TouchableOpacity
+                    onPress = {__handleFlash}
+                    style = {{
+                      position: 'absolute',
+                      left: '5%',
+                      top: '10%',
+                      backgroundColor: flash === 'off' ? '#000' : '#fff',
+                      borderRadius: '50%',
+                      height: 25,
+                      width: 25
+                    }}
+                  >
+                    <Text
+                      style = {{
+                        fontSize: 25
+                      }}
+                    >FLASH</Text>
+                  </TouchableOpacity>
+                </View>
                 <View
                   style = {{
                     position: 'absolute',
@@ -188,7 +207,7 @@ export default function App() {
                     />
                   </View>
                 </View>
-              </View>
+              
             </Camera>
           )}
           </View>
